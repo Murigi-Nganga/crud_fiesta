@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "305192070393",
+    "project_id": "cautious-waffle-crud",
+    "storage_bucket": "cautious-waffle-crud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305192070393:android:ecd898f4147fb270104628",
+        "android_client_info": {
+          "package_name": "com.example.cautious_waffle_crud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305192070393-nk1b2cq3juqtghqo0v0jt0t8a21mh2fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcLMflBQzuQ_Y-WZPH1DrxZn37smpRznw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305192070393-nk1b2cq3juqtghqo0v0jt0t8a21mh2fr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305192070393-6vtrggf2iq30v57r49im1quf7fatb93c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cautiousWaffleCrud"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305192070393:android:0cc44d957acb7297104628",
+        "android_client_info": {
+          "package_name": "com.example.crud_fiesta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305192070393-nk1b2cq3juqtghqo0v0jt0t8a21mh2fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcLMflBQzuQ_Y-WZPH1DrxZn37smpRznw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305192070393-nk1b2cq3juqtghqo0v0jt0t8a21mh2fr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305192070393-6vtrggf2iq30v57r49im1quf7fatb93c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cautiousWaffleCrud"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
