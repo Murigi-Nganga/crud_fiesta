@@ -1,5 +1,7 @@
 import 'dart:async' show StreamController;
 
+import 'package:crud_fiesta/services/auth/auth_exceptions.dart';
+import 'package:crud_fiesta/extensions/filter.dart';
 import 'package:flutter/material.dart' show immutable;
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart'
@@ -12,8 +14,6 @@ class NotesService {
   Database? _db;
 
   DatabaseUser? _user;
-
-  //Local list of Database Notes
 
   List<DatabaseNote> _dbNotes = [];
 
@@ -33,7 +33,24 @@ class NotesService {
 
   late final StreamController<List<DatabaseNote>> _notesStreamController;
 
-  Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
+  Stream<List<DatabaseNote>> get allNotes =>
+      // _notesStreamController.stream.map((dbNotes) => dbNotes.where((dbNote) {
+      //       final currentUser = _user;
+      //       if (currentUser != null) {
+      //         return dbNote.userId == currentUser.userId;
+      //       } else {
+      //         throw UserShouldBeSetBeforeReadingAllNotes();
+      //       }
+      //     }).toList());
+      //* Using the filter extension
+      _notesStreamController.stream.filter((note) {
+        final currentUser = _user;
+        if (currentUser != null) {
+          return note.userId == currentUser.userId;
+        } else {
+          throw UserShouldBeSetBeforeReadingAllNotes();
+        }
+      });
 
   Future<void> _cacheNotes() async {
     final allNotes = await getAllNotes();
@@ -198,7 +215,11 @@ class NotesService {
   Future<List<DatabaseNote>> getAllNotes() async {
     await _ensureDbIsOpen();
     final db = _getDatabaseOrThrow();
-    final notes = await db.query(notesTable);
+    final notes = await db.query(
+      notesTable,
+      // where: '$userIdColumn = ?',
+      // whereArgs: [_user!.userId],
+    );
 
     return notes.map((noteRow) => DatabaseNote.fromRow(noteRow)).toList();
   }
@@ -208,8 +229,8 @@ class NotesService {
     final db = _getDatabaseOrThrow();
     final deletedCount = await db.delete(
       notesTable,
-      where: '$noteIdColumn = ?',
-      whereArgs: [id],
+      // where: '$noteIdColumn = ?',
+      // whereArgs: [id],
     );
     if (deletedCount != 1) {
       throw CouldNotDeleteNote();
