@@ -229,8 +229,8 @@ class NotesService {
     final db = _getDatabaseOrThrow();
     final deletedCount = await db.delete(
       notesTable,
-      // where: '$noteIdColumn = ?',
-      // whereArgs: [id],
+      where: '$noteIdColumn = ?',
+      whereArgs: [id],
     );
     if (deletedCount != 1) {
       throw CouldNotDeleteNote();
